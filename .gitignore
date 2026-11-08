@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+node_modules/
+# progress exports and backups never belong in this repo
+*backup*.json
+manuel-fr*.json
+progress*.json
