@@ -1,5 +1,5 @@
 // Offline support for Manuel de français. Progress lives in this browser's localStorage, never here.
-const VERSION = '9b111ca91e';
+const VERSION = 'theme-20261109';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 const AUDIO = ["audio/common.58518ad078.mp3","audio/exams.50f19b6319.mp3","audio/phrases.d7dcca1acf.mp3","audio/numbers.698f384433.mp3","audio/pairs.4c4b9c8998.mp3","audio/u0.d77c8b3287.mp3","audio/u1.43fea4f3c8.mp3","audio/u2.a10e8369e0.mp3","audio/u3.dad2aa29ba.mp3","audio/u4.3f8a8ed467.mp3","audio/u5.021371792e.mp3","audio/u6.a7992c0b04.mp3"];
 const SHELL_CACHE = 'shell-' + VERSION, AUDIO_CACHE = 'audio', FONT_CACHE = 'fonts';

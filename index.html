@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="description" content="A French course from A1 to A2: lessons, review, listening and speaking practice."><meta name="theme-color" content="#f2f3f5"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><title>Manuel de français</title></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="description" content="A French course from A1 to A2: lessons, review, listening and speaking practice."><meta name="theme-color" content="#f2f3f5"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><title>Manuel de français</title><script>try{if(localStorage.getItem('mf-theme')==='dark'){document.documentElement.dataset.theme='dark';document.querySelector('meta[name="theme-color"]').content='#0c0e12'}}catch(e){}</script></head><body>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700;800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
 <style>
 /* Concept: the Paris métro. Each unit is a métro line in its official line colour; each unit's 8 sections are the
@@ -10,10 +10,6 @@
   --r:14px; --r-s:10px;
   --sign:"Barlow","Arial Narrow",Arial,sans-serif; --ui:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0c0e12; --card:#16191f; --ink:#eef0f4; --soft:#a7adba; --faint:#7c8290; --line:#272b34; --hover:#1d2128; --sunk:#12151a;
-  --primary:#5b8cff; --on-primary:#0c0e12; --ok:#5fd38a; --okbg:#12301f; --bad:#ff7b7b; --badbg:#3a1717; --warn:#ffc061; --warnbg:#33260f;
-  --shadow:0 1px 2px rgba(0,0,0,.4); color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0c0e12; --card:#16191f; --ink:#eef0f4; --soft:#a7adba; --faint:#7c8290; --line:#272b34; --hover:#1d2128; --sunk:#12151a;
   --primary:#5b8cff; --on-primary:#0c0e12; --ok:#5fd38a; --okbg:#12301f; --bad:#ff7b7b; --badbg:#3a1717; --warn:#ffc061; --warnbg:#33260f;
@@ -35,6 +31,8 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .brand{display:flex;gap:10px;align-items:center;padding:0 8px}
 .brand .logo{width:34px;height:34px;border-radius:10px;background:var(--ink);color:var(--card);display:grid;place-items:center;font:800 1rem/1 var(--sign)}
 .brand b{font:700 1.02rem/1.15 var(--ui);display:block} .brand small{font-size:.78rem;color:var(--soft)}
+.tbtn{width:40px;height:40px;display:grid;place-items:center;flex:none;padding:0;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--soft);transition:color .15s,border-color .15s}
+.tbtn:hover{color:var(--ink);border-color:var(--faint)}
 .toc h4{font:600 .7rem/1 var(--ui);text-transform:uppercase;letter-spacing:.1em;color:var(--faint);margin:0 0 6px 10px}
 .toc nav{display:grid;gap:2px;grid-template-columns:minmax(0,1fr)}
 .toc button{display:flex;align-items:center;gap:10px;text-align:left;background:none;border:0;border-radius:10px;padding:7px 10px;color:var(--soft);font-weight:500;width:100%}
@@ -252,7 +250,7 @@ details>summary{cursor:pointer;font-weight:600}
 <div class="shell">
   <aside class="toc" id="toc" aria-label="Sommaire"></aside>
   <div>
-    <div class="topbar"><button class="btn" type="button" id="tocBtn" aria-controls="toc" aria-expanded="false" aria-label="Menu"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><b id="topTitle">Manuel de français</b><span class="small muted num" id="topToday"></span></div>
+    <div class="topbar"><button class="btn" type="button" id="tocBtn" aria-controls="toc" aria-expanded="false" aria-label="Menu"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><b id="topTitle">Manuel de français</b><span class="small muted num" id="topToday"></span><span id="topTheme"></span></div>
     <main class="main" id="main"></main>
     <nav class="bnav" id="bnav" aria-label="Main"></nav>
   </div>
@@ -557,7 +555,12 @@ const mbadge = (u, size) => h('span', { class: 'mb' + (size ? ' ' + size : ''), 
 const ICON = { ear: 'M6 10a6 6 0 1 1 12 0c0 3-2 4-3 5.5S14 19 12 20.5 8 21 8 18M9 10a3 3 0 0 1 6 0', check: 'M5 12l5 5L20 7', ext: 'M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5', speak: 'M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3', words: 'M4 4h11l5 5v11H4zM8 12h8M8 16h6M8 8h4', build: 'M4 7h6v4H4zM14 7h6v4h-6zM9 15h6v4H9zM7 11v4h2M17 11v4h-2', home: 'M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z', review: 'M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4', plan: 'M4 6h16v14H4zM4 10h16M9 3v4M15 3v4',
   abc: 'M4 18l4-12 4 12M5.5 14h5M14 18V6h3.5a3 3 0 0 1 0 6H14m0 0h4a3 3 0 0 1 0 6h-4', num: 'M9 4L7 20M17 4l-2 16M4 9h16M3 15h16', exam: 'M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5', mist: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9 9l6 6M15 9l-6 6',
   gear: 'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z',
-  arrow: 'M5 12h14M13 6l6 6-6 6', clock: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2', flame: 'M12 3s5 4.5 5 9.5A5 5 0 0 1 7 12.5C7 9 9.5 8 9.5 5.5 11 7 12 8 12 3z', book: 'M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 5v16' };
+  arrow: 'M5 12h14M13 6l6 6-6 6', clock: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2', flame: 'M12 3s5 4.5 5 9.5A5 5 0 0 1 7 12.5C7 9 9.5 8 9.5 5.5 11 7 12 8 12 3z', book: 'M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 5v16',
+  sun: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4', moon: 'M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z' };
+// Theme: white by default, dark only when chosen (saved on this device)
+const isDarkTheme = () => document.documentElement.dataset.theme === 'dark';
+const themeBtn = () => h('button', { class: 'tbtn', type: 'button', title: 'Light / dark', 'aria-label': isDarkTheme() ? 'Switch to light theme' : 'Switch to dark theme', onclick: toggleTheme }, icon(isDarkTheme() ? 'sun' : 'moon'));
+function toggleTheme() { const d = !isDarkTheme(); if (d) document.documentElement.dataset.theme = 'dark'; else delete document.documentElement.dataset.theme; try { localStorage.setItem('mf-theme', d ? 'dark' : 'light'); } catch (e) {} const m = document.querySelector('meta[name="theme-color"]'); if (m) m.content = d ? '#0c0e12' : '#f2f3f5'; renderToc(); }
 const icon = n => { const sv = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); sv.setAttribute('viewBox', '0 0 24 24'); sv.setAttribute('class', 'i'); sv.setAttribute('aria-hidden', 'true'); const pa = document.createElementNS('http://www.w3.org/2000/svg', 'path'); pa.setAttribute('d', ICON[n]); sv.append(pa); return sv; };
 const allWords = () => UNITS.flatMap(u => u.vocab.flatMap(g => g.words.map((w, i) => Object.assign({ unit: u.id, grp: g.id, key: `w:${u.id}:${w.fr}` }, w))));
 function resolve(path) { // "u2/grammar/3/exercises/5"
@@ -795,14 +798,16 @@ function renderToc() {
   const top = cur.v === 'home' ? 'home' : (cur.v === 'course' || cur.v === 'unit' || cur.v === 'sec') ? 'course' : 'more';
   const item = (lead, t, extra, r, on) => h('button', { type: 'button', 'aria-current': on ? 'true' : 'false', onclick: () => go(r) }, lead, h('span', { class: 't' }, t), extra || null);
   $('toc').replaceChildren(
-    h('div', { class: 'brand' }, h('span', { class: 'logo' }, 'Fr'), h('div', null, h('b', null, 'Manuel de français'), h('small', null, 'A1 → A2 · INLL Belval'))),
+    h('div', { class: 'brand' }, h('span', { class: 'logo' }, 'Fr'), h('div', null, h('b', null, 'Manuel de français'), h('small', null, 'A1 → A2'))),
     h('nav', null,
       item(icon('home'), 'Aujourd’hui', null, { v: 'home' }, top === 'home'),
       item(icon('book'), 'Mon cours', null, { v: 'course' }, top === 'course'),
       item(icon('gear'), 'Plus', null, { v: 'more' }, top === 'more')),
-    u ? h('div', null, h('h4', null, 'You are in'), h('nav', null, item(mbadge(u, 's'), u.title, h('span', { class: 'p' }, Math.round(100 * unitProgress(u)) + '%'), { v: 'course', u: u.id }, cur.u === u.id))) : '');
+    u ? h('div', null, h('h4', null, 'You are in'), h('nav', null, item(mbadge(u, 's'), u.title, h('span', { class: 'p' }, Math.round(100 * unitProgress(u)) + '%'), { v: 'course', u: u.id }, cur.u === u.id))) : '',
+    h('nav', null, h('button', { type: 'button', 'aria-pressed': String(isDarkTheme()), onclick: toggleTheme }, icon(isDarkTheme() ? 'sun' : 'moon'), h('span', { class: 't' }, isDarkTheme() ? 'Mode clair' : 'Mode sombre'))));
   $('bnav').replaceChildren(...[['home', 'home', 'Aujourd’hui'], ['course', 'book', 'Mon cours'], ['more', 'gear', 'Plus']].map(([k, ic, t]) => h('button', { type: 'button', 'aria-current': top === k ? 'true' : 'false', onclick: () => go({ v: k }) }, icon(ic), t)));
   $('topToday').textContent = `${minutesToday()}/${S.set.goal} min`;
+  $('topTheme').replaceChildren(themeBtn());
 }
 function crumbs(...parts) { return h('div', { class: 'crumbs' }, parts.flatMap((p, i) => [i ? '›' : null, p.r ? h('button', { type: 'button', onclick: () => go(p.r) }, p.t) : h('span', null, p.t)])); }
 function render() {
